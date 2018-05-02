@@ -1,30 +1,30 @@
-# test
+运行项目
+clone项目到本地，进入项目文件夹，安装依赖
 
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
+git clone git@github.com:rarexxj/najin_m.git
+cd najin_m
 npm install
+然后运行项目
 
-# serve with hot reload at localhost:8080
 npm run dev
+接着运行 node,启动服务
 
-# build for production with minification
-npm run build
+//启动成功后，将看到输出
+// HTTP Server is running in http://localhost:8080
+最后打开浏览器，输入localhost:8080即可访问。效果图如下：
 
-# build for production and view the bundle analyzer report
-npm run build --report
+技术栈
+vue-wechat是主要在利用Vue.js * 实现了微信app及很多细节。
 
-# run unit tests
-npm run unit
+此demo在实现上使用了以下技术
 
-# run e2e tests
-npm run e2e
+vue
+vuex
+vue-cli
+vue-router
+axios
+sass
+Mint UI
 
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+关于vuex
+如果你想了解vuex的用法，可以切换到vuex分支，在该分支下，所有的state都采用vuex来管理。
