@@ -1,0 +1,88 @@
+<template>
+    <div class="transfer">
+        <div class="bubble-box" :style="{'top':top + 'px'}">
+            <bubble :y="bubbleY"></bubble>
+        </div>
+        <scroll class="scroll-box" v-if="transferableList.length > 0" :data="transferableList" :pullup="pullup" @scrollToEnd="loadBottom" :pulldown="pulldown" @pulldown="loadTop" :listenScroll="listenScroll" @scroll="scroll" :canScroll="canScroll">
+            <div class="scroll-wrapper">
+                <assgin-item type="4" v-for="(item,index) in transferableList" :key="index" :info="item"></assgin-item>
+                <scroll-text :canScroll="canScroll" v-show="showScrollText"></scroll-text>
+            </div>
+        </scroll>
+        <div class="empty-gray" v-else></div>
+    </div>
+</template>
+<script>
+import AssignItem from './AssignItem'
+import Scroll from '../Common/Scroll'
+import Bubble from '../Common/Bubble'
+import scrollText from '../Common/ScrollText'
+import { mapState } from 'vuex'
+export default {
+    data() { 
+        return {
+            listenScroll: true,
+            posY: 0,
+            bubbleY: 0,
+            pullup: true,
+            pulldown: true,
+            showScrollText:false,
+        }
+    },
+    computed: {
+        top() {
+            return this.posY - 80
+        },
+        ...mapState({
+            transferableList: state => state.assignlist.transferableList,
+            transferablePage: state => state.assignlist.transferablePage,
+            transferableTotal: state => state.assignlist.transferableTotal, 
+            transferableSize: state => state.assignlist.transferableSize,  //新闻每页条数
+        }),
+        canScroll() {  //判断是否为最后一页，是否能再次加载
+            if (this.transferablePage >= Math.ceil(this.transferableTotal / this.transferableSize)) {
+                return false
+            } else {
+                return true
+            }
+        }
+    },
+  components: {
+        'assgin-item':AssignItem,
+        'scroll': Scroll,
+        'bubble': Bubble,
+        'scroll-text':scrollText
+    },
+    methods: {
+        loadTop() {
+            this.$store.commit('CHANGE_TRANSFER_PAGE', 1)  //页码置1
+            this.$store.dispatch('getTransferList')  //请求列表
+        },
+        loadBottom() {
+            this.$store.commit('CHANGE_TRANSFER_PAGE') //页码加1
+            this.$store.dispatch('getTransferList')  //请求列表
+        },
+        scroll(pos) {
+            this.posY = pos.y
+            this.bubbleY = pos.y - 80
+        },
+    },
+    mounted(){
+        let _this = this
+        this.$store.dispatch('getTransferList')
+            .then(function(){
+                if(_this.canScroll){ //如果能滚动加载，则显示加载提示
+                    _this.showScrollText = true;
+                }
+
+            })  //请求列表
+    }
+}
+</script>
+<style lang="scss" scoped>
+.transfer{
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+</style>
