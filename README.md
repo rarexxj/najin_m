@@ -1,12 +1,18 @@
-运行项目
-clone项目到本地，进入项目文件夹，安装依赖
+#运行项目
+<p>clone项目到本地，进入项目文件夹，安装依赖</p>
 
-git clone git@github.com:rarexxj/najin_m.git
+git clone
+
+git@github.com:rarexxj/najin_m.git
+
 cd najin_m
+
 npm install
+
 然后运行项目
 
 npm run dev
+
 接着运行 node,启动服务
 
 //启动成功后，将看到输出
