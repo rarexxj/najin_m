@@ -1,13 +1,9 @@
-#运行项目
+# 运行项目
 <p>clone项目到本地，进入项目文件夹，安装依赖</p>
 
-git clone
+git clone &nbsp;&nbsp;git@github.com:rarexxj/najin_m.git
 
-git@github.com:rarexxj/najin_m.git
-
-cd najin_m
-
-npm install
+cd najin_m  &nbsp;&nbsp;&nbsp;  npm install
 
 然后运行项目
 
