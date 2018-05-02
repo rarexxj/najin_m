@@ -4,7 +4,7 @@
 ```
 git clone
 
-  git@github.com:rarexxj/najin_m.git
+git@github.com:rarexxj/najin_m.git
 ```
 
 ```
@@ -34,11 +34,17 @@ vue-wechat是主要在利用Vue.js * 实现了微信app及很多细节。
 
 ```
 vue
+
 vuex
+
 vue-cli
+
 vue-router
+
 axios
+
 sass
+
 Mint UI
 ```
 
