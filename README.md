@@ -28,9 +28,7 @@ npm run dev
 
 # 技术栈
 
-vue-wechat是主要在利用Vue.js * 实现了微信app及很多细节。
-
-此demo在实现上使用了以下技术
+此项目在实现上使用了以下技术
 
 ```
 vue
@@ -47,7 +45,3 @@ sass
 
 Mint UI
 ```
-
-
-## 关于vuex
-如果你想了解vuex的用法，可以切换到vuex分支，在该分支下，所有的state都采用vuex来管理。
